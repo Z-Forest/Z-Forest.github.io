@@ -547,7 +547,7 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                         var years = days * 365;
                         var today = new Date();
                         var startYear = "2021";
-                        var startMonth = "10";
+                        var startMonth = "5";
                         var startDate = "1";
                         var startHour = "0";
                         var startMinute = "0";
@@ -563,6 +563,9 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                         var diff = t2 - t1;
                         var diffYears = Math.floor(diff / years);
                         var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff / hours) - diffYears * 365 * 24 - diffDays * 24);
+                        var diffMinutes = Math.floor((diff / minutes) - diffYears * 365 * 24 * 60 - diffDays * 24 * 60 - diffHours * 60 );
+                        var diffSeconds = Math.floor((diff / seconds) - diffYears * 365 * 24 * 60 * 60 - diffDays * 24 * 60 * 60 - diffHours * 60 * 60 - diffMinutes * 60);
 
                         // 区分是否有年份.
                         var language = 'zh-CN';
@@ -570,9 +573,9 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                             document.getElementById("year").innerHTML = todayYear;
                             var daysTip = 'This site has been running for ' + diffDays + ' days';
                             if (language === 'zh-CN') {
-                                daysTip = '本站已勉强运行 ' + diffDays + ' 天';
+                                daysTip = '本站已勉强运行 ' + diffDays + ' 天' + diffHours + '小时'+ diffMinutes +'分钟' + diffSeconds + '秒';
                             } else if (language === 'zh-HK') {
-                                daysTip = '本站已勉强運行 ' + diffDays + ' 天';
+                                daysTip = '本站已勉强运行 ' + diffDays + ' 天' + diffHours + '小时'+ diffMinutes +'分钟' + diffSeconds + '秒';
                             }
                             document.getElementById("sitetime").innerHTML = daysTip;
                         } else {
@@ -580,9 +583,9 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                             var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
                                 + diffDays + ' days';
                             if (language === 'zh-CN') {
-                                yearsAndDaysTip = '本站已勉强运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                yearsAndDaysTip = '本站已勉强运行 ' + diffDays + ' 天' + diffHours + '小时'+ diffMinutes +'分钟' + diffSeconds + '秒';
                             } else if (language === 'zh-HK') {
-                                yearsAndDaysTip = '本站已勉强運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                yearsAndDaysTip = '本站已勉强运行 ' + diffDays + ' 天' + diffHours + '小时'+ diffMinutes +'分钟' + diffSeconds + '秒';
                             }
                             document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
                         }
