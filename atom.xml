@@ -3,11 +3,11 @@
   <title>Z-Forest&#39;s Blog</title>
   
   <subtitle>Serendipity</subtitle>
-  <link href="https://github.com/Z-Forest/Z-Forest.github.io.git/atom.xml" rel="self"/>
+  <link href="http://example.com/atom.xml" rel="self"/>
   
-  <link href="https://github.com/Z-Forest/Z-Forest.github.io.git/"/>
+  <link href="http://example.com/"/>
   <updated>2022-03-29T03:49:12.320Z</updated>
-  <id>https://github.com/Z-Forest/Z-Forest.github.io.git/</id>
+  <id>http://example.com/</id>
   
   <author>
     <name>Z-Forest</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>typora-vue-theme Theme introduction</title>
-    <link href="https://github.com/Z-Forest/Z-Forest.github.io.git/2021/10/07/hello-world/"/>
-    <id>https://github.com/Z-Forest/Z-Forest.github.io.git/2021/10/07/hello-world/</id>
+    <link href="http://example.com/2021/10/07/hello-world/"/>
+    <id>http://example.com/2021/10/07/hello-world/</id>
     <published>2021-10-07T01:25:00.000Z</published>
     <updated>2022-03-29T03:49:12.320Z</updated>
     
@@ -35,12 +35,12 @@
     
     
     
-    <category term="Markdown" scheme="https://github.com/Z-Forest/Z-Forest.github.io.git/categories/Markdown/"/>
+    <category term="Markdown" scheme="http://example.com/categories/Markdown/"/>
     
     
-    <category term="Typora" scheme="https://github.com/Z-Forest/Z-Forest.github.io.git/tags/Typora/"/>
+    <category term="Typora" scheme="http://example.com/tags/Typora/"/>
     
-    <category term="Markdown" scheme="https://github.com/Z-Forest/Z-Forest.github.io.git/tags/Markdown/"/>
+    <category term="Markdown" scheme="http://example.com/tags/Markdown/"/>
     
   </entry>
   
