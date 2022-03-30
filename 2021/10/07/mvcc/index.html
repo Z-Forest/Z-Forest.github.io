@@ -530,9 +530,9 @@
 <li><strong>trx_id :</strong> 操作这个数据事务 ID ，也就是最后一个对数据插入或者更新的事务 ID 。</li>
 <li><strong>roll_ptr :</strong> 回滚指针，指向这个记录的 Undo Log 信息。</li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/13c91af5753d42dea82b84898bd41acd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK5ZWK,size_18,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/13c91af5753d42dea82b84898bd41acd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK5ZWK,size_18,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
 <h3 id="Undo-Log"><a href="#Undo-Log" class="headerlink" title="Undo Log"></a><strong>Undo Log</strong></h3><p>InnoDB 将<strong>行记录快照保存在 Undo Log</strong> 里。</p>
-<p><img src="https://img-blog.csdnimg.cn/1dc55cd00b6345809368429bfd5197cc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK5ZWK,size_19,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/1dc55cd00b6345809368429bfd5197cc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK5ZWK,size_19,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
 <p> 数据行通过快照记录都通过链表的结构的串联了起来，<strong>每个快照都保存了 trx_id 事务ID</strong>，如果要找到历史快照，就可以通过<strong>遍历回滚指针</strong>的方式进行查找。</p>
 <h2 id="Read-View-是啥？"><a href="#Read-View-是啥？" class="headerlink" title="Read View 是啥？"></a><strong>Read View 是啥？</strong></h2><p>如果一个事务要<strong>查询行记录</strong>，需要读取哪个版本的行记录呢？ Read View 就是来解决这个问题的。Read View 可以帮助我们<strong>解决可见性问题</strong>。 Read View 保存了<strong>当前事务开启时所有活跃的事务列表</strong>。换个角度，可以理解为: <strong>Read View 保存了不应该让这个事务看到的其他事务 ID 列表。</strong></p>
 <ol>

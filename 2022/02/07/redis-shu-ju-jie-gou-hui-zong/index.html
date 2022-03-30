@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Redis数据结构汇总, Z-Forest&#39;s Blog">
     <meta name="description" content="关于key：
-1.key****不要太长，尽量不要超过1024字节，这不仅消耗内存，而且会降低查找的效率；
-2.key****也不要太短，太短的话，key的可读性会降低；
-3.在一个项目中，key最好使用统一的命名模式，例如user:100">
+1.key不要太长，尽量不要超过1024字节，这不仅消耗内存，而且会降低查找的效率；
+2.key也不要太短，太短的话，key的 可读性会降低；
+3.在一个项目中，key最好使用统一的命名模式，例如user:10000:pass">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -501,18 +501,18 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>关于key：</strong></p>
-<p><strong>1.key****不要太长</strong>，尽量不要超过1024字节，这不仅消耗内存，而且会<strong>降低查找的效率</strong>；</p>
-<p><strong>2.key****也不要太短</strong>，太短的话，key的<strong>可读性会降低</strong>；</p>
+<p><strong>1.key不要太长</strong>，尽量不要超过1024字节，这不仅消耗内存，而且会<strong>降低查找的效率</strong>；</p>
+<p><strong>2.key</strong>也不要太短，太短的话，key的 <strong>可读性会降低</strong>；</p>
 <p>3.在一个项目中，key最好使用<strong>统一的命名</strong>模式，例如user:10000:passwd。</p>
-<p><img src="https://img-blog.csdnimg.cn/a27425f4b5314e018913a10a4e1c34ce.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<h1 id="1-字符串-String终究是我扛下了所有-："><a href="#1-字符串-String终究是我扛下了所有-：" class="headerlink" title="**1.**字符串(String终究是我扛下了所有)："></a>**1.**<strong>字符串(String终究是我扛下了所有)：</strong></h1><p>redis中的键都是字符串对象，而且其他几种数据结构都是在字符串对象基础上构建的。字符串对象的值可以是<strong>字符串(Json/XML)、数字(int/double等)或二进制(图片视频音频等)<strong>，最大不能超过512MB。字符串对象的内部编码有3种 ：</strong>int(字符串对象保存的是int ,并且可以用long表示)、raw(字符串对象保存的字符串值长度&gt;32字节)和embstr(&lt;=32字节)<strong>。Redis会根据当前</strong>值的类型和长度</strong>来决定使用哪种编码来实现。</p>
-<p><img src="https://img-blog.csdnimg.cn/6ce8895892354b70bbe13ac1b8140a51.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/a27425f4b5314e018913a10a4e1c34ce.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<h1 id="1-字符串-String终究是我扛下了所有-："><a href="#1-字符串-String终究是我扛下了所有-：" class="headerlink" title="1.字符串(String终究是我扛下了所有)："></a><strong>1.字符串(String终究是我扛下了所有)：</strong></h1><p>redis中的键都是字符串对象，而且其他几种数据结构都是在字符串对象基础上构建的。字符串对象的值可以是<strong>字符串(Json/XML)、数字(int/double等)或二进制(图片视频音频等)<strong>，最大不能超过512MB。字符串对象的内部编码有3种 ：</strong>int(字符串对象保存的是int ,并且可以用long表示)、raw(字符串对象保存的字符串值长度&gt;32字节)和embstr(&lt;=32字节)<strong>。Redis会根据当前</strong>值的类型和长度</strong>来决定使用哪种编码来实现。</p>
+<p><img src="https://img-blog.csdnimg.cn/6ce8895892354b70bbe13ac1b8140a51.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
 <p><strong>应用场景：</strong></p>
 <p><strong>①Redis经常作为缓存层</strong>，<strong>来缓存热点数据</strong>。先去redis读取，没有再去数据库。不过要注意一些问题：缓存穿透、雪崩以及缓存更新问题等。</p>
 <p><strong>②计数器：</strong>经常可以被用来做计数器，如微博的评论数、点赞数、分享数，抖音作品的收藏数，京东商品的销售量、评价数等。<strong>限速器：</strong>如验证码接口访问频率限制，会限制用户每分钟获取验证码的频率。<strong>分布式ID：</strong>由于Redis自增自减操作的原子性，也经常在分布式系统中用来生成唯一的订单号、序列号等。</p>
 <p>**③分布式系统共享session:**用户的请求可能分发到不同的服务器上，从而导致用户登录保存Session是在一台服务器上，而读取Session是在另一台服务器上因此会读不到Session。</p>
 <p><strong>④二进制数据的存储</strong>(图片视频音频等)。</p>
-<h1 id="2-列表-List栈和队列我都行-："><a href="#2-列表-List栈和队列我都行-：" class="headerlink" title="**2.**列表(List栈和队列我都行)："></a>**2.**<strong>列表(List栈和队列我都行)：</strong></h1><p>存储一组有序的、可重复的数据。因<strong>有序性</strong>，它可以获取指定范围的列表元素，<strong>可以0(1)时间复杂度获取指定索引下标的元素。</strong></p>
+<h1 id="2-列表-List栈和队列我都行-："><a href="#2-列表-List栈和队列我都行-：" class="headerlink" title="2.列表(List栈和队列我都行)："></a><strong>2.列表(List栈和队列我都行)：</strong></h1><p>存储一组有序的、可重复的数据。因<strong>有序性</strong>，它可以获取指定范围的列表元素，<strong>可以0(1)时间复杂度获取指定索引下标的元素。</strong></p>
 <p>①当列表的<strong>元素个数&lt;512</strong>并且每个元素的<strong>值&lt;64字节</strong>时: List对象使用ziplist(压缩列表)数据结构，否则用linkedlist作为内部实现。</p>
 <p>②Redis 3.2版本开始使用<strong>quicklist是</strong>zipList和linkedList的混合体，代替了ziplist和linkedlist(**双向循环列表)**，调高了内存管理效率。</p>
 <p><strong>改用quicklist原因：</strong>链表的<strong>附加空间相对太高</strong>prev和next指针就要占去16个字节(64位系统的指针是8个字节), 另外每个节点的内存都是单独分配(加剧**内存的碎片化)**，影响内存管理效率。</p>
@@ -522,7 +522,7 @@
 <p>③栈：1push 1pop</p>
 <h1 id="3-哈希-Hash存储对象我也行-：key-map"><a href="#3-哈希-Hash存储对象我也行-：key-map" class="headerlink" title="3. 哈希(Hash存储对象我也行)：key : map"></a><strong>3.</strong> <strong>哈希(Hash存储对象我也行)：</strong>key : map</h1><p><strong>①两种实现方式</strong>：<strong>ziplist（压缩列表）， hashtable(哈希表)</strong></p>
 <p><strong>②数据量小的时候</strong>：字典中保存的<strong>键值大小&lt; 64 字节</strong> 并且 字典中<strong>键值对个数&lt;512个</strong>。否则用hashtable来实现哈希对象。</p>
-<p><img src="https://img-blog.csdnimg.cn/9a1ad0b852274775a7ae6627be465116.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_17,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://img-blog.csdnimg.cn/9a1ad0b852274775a7ae6627be465116.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_17,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
 <p><strong>应用场景：</strong></p>
 <p>①字符串对象的很多功能使用哈希对象可以实现。如缓存用户信息的时候，使用Redis哈希对象存储，简单直观，如果使用合理可以减少内存空间的使用。<strong>缺点</strong>是hashtable会<strong>消耗更多内存</strong>。②购物车、计数器等功能。</p>
 <h1 id="4-集合-Set标签系统我在行"><a href="#4-集合-Set标签系统我在行" class="headerlink" title="4. 集合(Set标签系统我在行)"></a><strong>4.</strong> <strong>集合(Set标签系统我在行)</strong></h1><p><strong>内部编码两种</strong>: 元素都是整数 且 元素个数&lt;512个使用intset编码，否则使用hashtable</p>
@@ -533,17 +533,17 @@
 <p><strong>存储结构：</strong>数据较少时,元素个数&lt;128个；元素长度&lt;64字节。用ziplist存储。否则用skiplist(跳表)存储。</p>
 <p><strong>应用场景：</strong></p>
 <p>①排行榜：网站用户点赞、播放排名、电商系统中商品销量排名等。</p>
-<h1 id="6-压缩列表-zip1ist-：是列表和哈希的底层实现之一。"><a href="#6-压缩列表-zip1ist-：是列表和哈希的底层实现之一。" class="headerlink" title="**6.**压缩列表(zip1ist)：是列表和哈希的底层实现之一。"></a>**6.**<strong>压缩列表(zip1ist)：</strong>是列表和哈希的底层实现之一。</h1><p>  <strong>列表只包含少量列表项</strong>,并且每个列表项要么就是<strong>小整数值</strong>,要么就是<strong>长度比较短的字符串</strong>,那么Redis就会使用压缩列表来做<strong>List的底层实现</strong>。</p>
+<h1 id="6-压缩列表-zip1ist-：是列表和哈希的底层实现之一。"><a href="#6-压缩列表-zip1ist-：是列表和哈希的底层实现之一。" class="headerlink" title="6.压缩列表(zip1ist)：是列表和哈希的底层实现之一。"></a><strong>6.压缩列表(zip1ist)：是列表和哈希的底层实现之一。</strong></h1><p>  <strong>列表只包含少量列表项</strong>,并且每个列表项要么就是<strong>小整数值</strong>,要么就是<strong>长度比较短的字符串</strong>,那么Redis就会使用压缩列表来做<strong>List的底层实现</strong>。</p>
 <p>  <strong>哈希只包含少量键值对</strong>, 并且每个键值对的<strong>键和值</strong>要么就是<strong>小整数值</strong>,要么就是<strong>长度比较短的字符串</strong>,那么Redis就会使用压缩列表来做<strong>Hash的底层实现</strong>。</p>
-<p><img src="https://img-blog.csdnimg.cn/a827700e7e1743ad8242d87e765eada8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<h1 id="7-跳跃表-skiplist-：-单链表-多级索引"><a href="#7-跳跃表-skiplist-：-单链表-多级索引" class="headerlink" title="7. 跳跃表(skiplist)：****单链表 + 多级索引"></a><strong>7.</strong> <strong>跳跃表(skiplist)：****单链表 + 多级索引</strong></h1><p>如果一个有序集合元素数量<strong>比较多</strong> 或 元素成员是<strong>比较长</strong>的字符串时，Redis 就会<strong>使用跳跃表作为有序集合健的底层实现</strong>。</p>
+<p><img src="https://img-blog.csdnimg.cn/a827700e7e1743ad8242d87e765eada8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
+<h1 id="7-跳跃表-skiplist-：单链表-多级索引"><a href="#7-跳跃表-skiplist-：单链表-多级索引" class="headerlink" title="7. 跳跃表(skiplist)：单链表 + 多级索引"></a><strong>7.</strong> <strong>跳跃表(skiplist)：单链表 + 多级索引</strong></h1><p>如果一个有序集合元素数量<strong>比较多</strong> 或 元素成员是<strong>比较长</strong>的字符串时，Redis 就会<strong>使用跳跃表作为有序集合健的底层实现</strong>。</p>
 <p><strong>特点：</strong></p>
 <p>①跳跃表在链表的基础上增加了<strong>多级索引提升查找的效率</strong>，但其是一个<strong>空间换时间</strong>的方案，必然会带来一个问题-索引是占内存的。原始链表中存储的有可能是很大的对象，而<strong>索引结点只需要存储关键值和几个指针</strong>，<strong>优势会放大，缺点可忽略</strong>。</p>
 <p>②跳跃表由<strong>zskiplist</strong>和<strong>zskiplist</strong>node两个结构组成，其中 <strong>zskiplist用于保存跳跃表信息</strong>（比如<strong>表头节点、表尾节点、长度</strong>），而<strong>zskiplistnode则用于表示跳跃表节点(层level、后退指针backward、分值score、成员对象oj)</strong></p>
 <p>③Redis每个跳跃表<strong>节点的层高都是1至32</strong>之间的随机数</p>
 <p>④在同一个跳跃表中，多个节点可以包含相同的分值，但每个节点的成员对象必须是唯一的跳跃表中的节点按照分值大小进行排序，当分值相同时，节点按照成员对象的大小进行排序。<strong>（分值可以重复，但元素不能重复）</strong></p>
-<h1 id="8-快速列表-quicklist-："><a href="#8-快速列表-quicklist-：" class="headerlink" title="**8.**快速列表(quicklist)："></a>**8.**<strong>快速列表(quicklist)：</strong></h1><p>Redis 3.2版本以后提出的，是 zipList 和 linkedList 的混合体，相对于链表它<strong>压缩了内存</strong>。<strong>即有链表的双向性质，又有ziplist高效的内存使用率</strong>。一个quicklistnode的数据由ziplist存储存储，<strong>新建一个ziplist就会新建一个quicklistnode节点。</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/4f08211833294ef49be96eae01c24b3c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h1 id="8-快速列表-quicklist-："><a href="#8-快速列表-quicklist-：" class="headerlink" title="8.快速列表(quicklist)："></a><strong>8.快速列表(quicklist)：</strong></h1><p>Redis 3.2版本以后提出的，是 zipList 和 linkedList 的混合体，相对于链表它<strong>压缩了内存</strong>。<strong>即有链表的双向性质，又有ziplist高效的内存使用率</strong>。一个quicklistnode的数据由ziplist存储存储，<strong>新建一个ziplist就会新建一个quicklistnode节点。</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/4f08211833294ef49be96eae01c24b3c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
 <p><strong>插入</strong></p>
 <p>**①头结点的头部或尾节点的尾部插入:**如果头节点(或尾节点)上ziplist大小没有超过限制, 那么新数据被直接插入到ziplist中（调用 ziplistPush ）。否则新创建一个quicklistNode节点(对应地也会新创建一个ziplist)</p>
 <p><strong>②中间插入：</strong></p>

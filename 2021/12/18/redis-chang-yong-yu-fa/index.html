@@ -537,15 +537,17 @@ getrange k1  0  -1 //查看整个字符串
 
 setrange k1  1  xx  //替换指定位置开始的字符串，从下标1开始替换成xx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+
+
 <p><strong>分布式锁中会使用</strong></p>
-<pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">setex  k1 10  //设置k1  10s的过期时间
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">setex  k1 <span class="token number">10</span>  <span class="token comment">//设置k1  10s的过期时间</span>
 
-setnx  mykey  “ myvalue” //不存在再设置
+setnx  mykey  “ myvalue” <span class="token comment">//不存在再设置</span>
 
-ttl  k1  //查看k1剩余时间<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ttl  k1  <span class="token comment">//查看k1剩余时间</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+
+
 <p><strong>批量设置和获取</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">mset  k1 v1  k2  v2  k3  v3
 
@@ -553,7 +555,6 @@ mget  k1  k2  k3  //批量获取key的值
 
 msetnx k1 v1 k4 v4  //redis的事务不具有原子性但是操作具有原子性，msetnx要么全部成功要么全部回滚。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>对象user : {id} : {filed}</strong> </p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">set user :1 {name : zhangsen, age : 3 , sex : f}
 
@@ -562,17 +563,21 @@ mset user : 1 : name  zhangsan  user : 1 : age 2
 mget  user : 1 : name   user:1:age
 
 
+getset  k1  20   //先获取k1的值，再设置成20，不存在返回nil<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-getset  k1  20   //先获取k1的值，再设置成20，不存在返回nil<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <h2 id="2-List"><a href="#2-List" class="headerlink" title="2. List"></a>2. List</h2><p>lists的底层实现是<strong>链表</strong>，头部和尾部插入速度极快，但定位会比较慢。</p>
 <p>key不存在，创建新的链表。移除了所有的值，空链表也是不存在。</p>
 <p><strong>应用场景：</strong></p>
-<p>\1. 我们可以利用lists来实现一个<strong>消息队列（Lpush Rpop）（重点****）</strong>，而且可以确保先后顺序，不必像MySQL需要通过ORDER BY来进行排序。</p>
-<p>\2. 利用LRANGE还可以很方便的实现<strong>分页</strong>的功能。</p>
-<p>\3. 在博客系统中，每片<strong>博文的评论</strong>也可以存入一个<strong>单独的list</strong>中。</p>
-<p>\4. 栈（Lpush Lpop）</p>
+<ol>
+<li><p>我们可以利用lists来实现一个<strong>消息队列（Lpush Rpop）（重点****）</strong>，而且可以确保先后顺序，不必像MySQL需要通过ORDER BY来进行排序。</p>
+</li>
+<li><p>利用LRANGE还可以很方便的实现<strong>分页</strong>的功能。</p>
+</li>
+<li><p>在博客系统中，每片<strong>博文的评论</strong>也可以存入一个<strong>单独的list</strong>中。</p>
+</li>
+<li><p>栈（Lpush Lpop）</p>
+</li>
+</ol>
 <p><strong>插入</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">lpush   list  one
 
@@ -584,7 +589,6 @@ lrange list  0 1  //返回[0,1]元素 这里返回的是three two
 
 rpush  list  right  //右边插入，插入尾部<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>移除</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">lpop  list //左边移除
 
@@ -592,21 +596,17 @@ rpo  list   //右边移除
 
 lrem list  0  three  //移除指定下标的值，这里是移除下标为0的three<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>修剪</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">ltrim  list  1  2  //截取指定下标范围的值，会改变list（原地操作）<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>获取值</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">lindex  list  1  //通过下标获取值
 
 llen  list  //返回长度<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>不同list之间移动元素</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">rpoplpush  list   mylist  //移除list右边的第一个元素放到mylist左边第一个位置<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>更新值</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">lset  list  1  newvalue  //修改指定下标的值，前提是存在这个list
 
@@ -616,7 +616,6 @@ linsert  list before  one   zero  //在one之前插入zero
 
 linsert  list  after  three  four  //在three之后插入four<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <h2 id="3-Set"><a href="#3-Set" class="headerlink" title="3. Set"></a>3. Set</h2><p>集合中元素不重复，无序。</p>
 <p>当集合元素都是整数，且数量不超过512个，用<strong>整数集合</strong>实现。否则<strong>用Hash表实现。</strong></p>
 <p><strong>应用场景：</strong></p>
@@ -627,39 +626,31 @@ smembers  myset  //查看集合成员
 
 sismember  myset word //查看元素是否属于一个集合<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>获取元素个数</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">scard  myset   //获取元素个数<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>随机抽选</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">srandmember  myset  //随机抽选出指定个数的元素
 
 srandmember  myset  2  //随机选出2个元素<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>删除</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">spop  myset  //随机删除
 
 srem  myset  hello   //指定删除<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>两个集合元素移动</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">smove  myset  myset2  hello  //将myset中的hello移动到myset2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>求差集</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">sdiff  myset  myset2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>求交集</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">sinter  myset  myset2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>求并集</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">sunion  myset  myset2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>应用场景：</strong></p>
 <p>微博共同关注(并集)</p>
 <h2 id="4-Hash"><a href="#4-Hash" class="headerlink" title="4. Hash"></a>4. Hash</h2><p>hashes存的是字符串和字符串值之间的映射，比如一个用户要存储其全名、姓氏、年龄等等，就很适合使用哈希。</p>
@@ -670,7 +661,6 @@ srem  myset  hello   //指定删除<span aria-hidden="true" class="line-numbers-
 
 hget  myhash  fileld1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>多值设置</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">hmset myhash  name lisi  age  15   // 设置多个键值
 
@@ -678,13 +668,11 @@ hmget myhash name  age  //获取多个键值
 
 hgetall myhash   //获取所有的键值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>删除</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">hdel  myhash  name   //删除指定field
 
 hlen  myhash   //获取field个数或者hash的长度<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>判断是否存在</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">hexists  myhash  field1  //判断某个字段是否存在
 
@@ -696,11 +684,9 @@ hincrby  muhash  field2  1 //对指定字段的值增加指定数值
 
 hsetnx  myhash field 2  newvalue  //如果不存在就设置为newvalue 已存在则不能设置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>应用：存储变动的信息，存储对象</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">hset  user : name  zhangsan  age  15  sex  female<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <h2 id="5-Zset"><a href="#5-Zset" class="headerlink" title="5. Zset"></a>5. Zset</h2><p><strong>在set的基础上增加了一个score值。</strong></p>
 <p><strong>字典+跳跃表实现：</strong></p>
 <p><strong>字典：实现O(1)查找数据。跳跃表：实现有序操作。</strong></p>
@@ -712,7 +698,6 @@ zadd  salary  2500  zhangsan //添加一个值
 
 zadd  salary  45000  xiaohong    800  xiaoming   //添加多个值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>排序</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">zrangebyscore  salary   -inf   +inf 
 
@@ -726,19 +711,15 @@ zrange  salary  0  5000  withscores  //按照score升序排列，范围在0到50
 
 zrevrangebyscore  salary  0  5000  withscores  //降序排列<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>删除</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">zrem salary zhangsan<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>获取有序集合元素的个数</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">zcard salary<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>统计两个区间的元素有多少个</strong></p>
 <pre class="line-numbers language-Go" data-language="Go"><code class="language-Go">zcount  salary<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p><strong>应用场景：</strong></p>
 <p>重要消息和普通消息</p>
 <p>排行榜（播放量进行排序）</p>
