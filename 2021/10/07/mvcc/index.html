@@ -4,9 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="typora-vue-theme Theme introduction, Z-Forest&#39;s Blog">
-    <meta name="description" content="
-title: Hello WorldWelcome to Hexo! This is your very first post. Check documentation for more info. If you get any prob">
+    <meta name="keywords" content="多版本并发控制, Z-Forest&#39;s Blog">
+    <meta name="description" content="并发一致性问题：1. 丢失修改:
+2. 读脏数据: 
+事务A读取事务B未提交的修改，事务B之后进行了回滚。
+3. 不可重复读：
+事务A读取了事务B未提交的修改。一个事务读取了另外一个事务 修改 后记录 强调的是 update 和delete">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +21,7 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>typora-vue-theme Theme introduction | Z-Forest&#39;s Blog</title>
+    <title>多版本并发控制 | Z-Forest&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -313,12 +316,12 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">typora-vue-theme Theme introduction</h1>
+                    <h1 class="description center-align post-title">多版本并发控制</h1>
                 </div>
             </div>
         </div>
@@ -434,12 +437,8 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Typora/">
-                                <span class="chip bg-color">Typora</span>
-                            </a>
-                        
-                            <a href="/tags/Markdown/">
-                                <span class="chip bg-color">Markdown</span>
+                            <a href="/tags/MVCC/">
+                                <span class="chip bg-color">MVCC</span>
                             </a>
                         
                     </div>
@@ -450,8 +449,8 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Markdown/" class="post-category">
-                                Markdown
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" class="post-category">
+                                数据库原理
                             </a>
                         
                     </div>
@@ -472,14 +471,14 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    75
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -502,20 +501,64 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <hr>
-<h2 id="title-Hello-World"><a href="#title-Hello-World" class="headerlink" title="title: Hello World"></a>title: Hello World</h2><p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h2 id="并发一致性问题："><a href="#并发一致性问题：" class="headerlink" title="并发一致性问题："></a>并发一致性问题：</h2><p><strong>1. 丢失修改:</strong></p>
+<p><strong>2. 读脏数据:</strong> </p>
+<p>事务A读取事务B未提交的修改，事务B之后进行了回滚。</p>
+<p><strong>3. 不可重复读：</strong></p>
+<p>事务A读取了事务B未提交的修改。一个事务读取了另外一个事务 <strong>修改</strong> 后记录 强调的是 <strong>update 和delete</strong> , 只需要锁住满足条件的记录即可。</p>
+<p><strong>4. 幻读：</strong></p>
+<p>一个事务读取了另外一个事务<strong>插入</strong>的数据，强调的是 <strong>insert</strong> ，要锁住满足条件及相近的记录。</p>
+<p>MYSQL 中默认的隔离级别是可重复读，可解决脏读和不可重复读的问题。但是不能解决幻读的问题。 Oracle 默认的是Read Commit 读已提交，可以避免脏读的问题。</p>
+<h3 id="幻读是因为update的操作的where是属于当前读，所以与快照读无关，从而导致了update修改的数据的版本号也被更新为了当前的版本号（可能存在低的事务版本号覆盖高的事务版本号），然后update后续的查询就能查询到了其他高版本事务提交后的数据了；主要的原因还是因为update当前读数据再不同事务中冲突导致，所以解决思路也是如何避免此冲突，通常是加行锁"><a href="#幻读是因为update的操作的where是属于当前读，所以与快照读无关，从而导致了update修改的数据的版本号也被更新为了当前的版本号（可能存在低的事务版本号覆盖高的事务版本号），然后update后续的查询就能查询到了其他高版本事务提交后的数据了；主要的原因还是因为update当前读数据再不同事务中冲突导致，所以解决思路也是如何避免此冲突，通常是加行锁" class="headerlink" title="幻读是因为update的操作的where是属于当前读，所以与快照读无关，从而导致了update修改的数据的版本号也被更新为了当前的版本号（可能存在低的事务版本号覆盖高的事务版本号），然后update后续的查询就能查询到了其他高版本事务提交后的数据了；主要的原因还是因为update当前读数据再不同事务中冲突导致，所以解决思路也是如何避免此冲突，通常是加行锁"></a>幻读是因为update的操作的where是属于当前读，所以与快照读无关，从而导致了update修改的数据的版本号也被更新为了当前的版本号（可能存在低的事务版本号覆盖高的事务版本号），然后update后续的查询就能查询到了其他高版本事务提交后的数据了；主要的原因还是因为update当前读数据再不同事务中冲突导致，所以解决思路也是如何避免此冲突，通常是加行锁</h3><hr>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="1-MVCC"><a href="#1-MVCC" class="headerlink" title="1. MVCC"></a><strong>1. MVCC</strong></h2><p>MVCC 的英文全称是 Multiversion Concurrency Control ，中文意思是<strong>多版本并发控制技术</strong>。原理是，通过数据行的多个版本管理来实现数据库的并发控制，简单来说就是保存数据的历史版本。可以通过<strong>比较版本号决定数据是否显示出来</strong>。读取数据的时候不需要加锁可以保证事务的隔离效果。</p>
+<p><strong>备注：</strong></p>
+<p>MYSQL 中默认的隔离级别是<strong>可重复读</strong>，可<strong>解决脏读和不可重复读</strong>的问题。但是<strong>不能解决幻读</strong>的问题。 Oracle 默认的是Read Commit 读已提交，可以避免脏读的问题。</p>
+<h2 id="2-解决什么问题？"><a href="#2-解决什么问题？" class="headerlink" title="2. 解决什么问题？"></a><strong>2. 解决什么问题？</strong></h2><p>一般解决不可重复读 和 幻读问题，是采用锁机制实现，有没有一种<strong>乐观锁</strong>的问题去处理，可以采用 MVCC 机制的设计，可以用来解决这个问题。取代 行锁，降低系统开销。</p>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h2 id="3-优点或解决什么问题？"><a href="#3-优点或解决什么问题？" class="headerlink" title="3.优点或解决什么问题？"></a><strong>3.优点或解决什么问题？</strong></h2><ul>
+<li>读写不阻塞，读旧版本的快照，写最新版本的快照。提升数据并发处理能力。</li>
+<li>降低了死锁的概率， MVCC 采用乐观锁，读取数据时，不需要加锁，写操作，只需要锁定必要的行。</li>
+<li>解决了一致性读的问题，当我们朝向某个数据库在时间点的快照是，只能看到这个时间点之前事务提交更新的结果，不能看到时间点之后事务提交的更新结果。</li>
+</ul>
+<h2 id="-2"><a href="#-2" class="headerlink" title=""></a></h2><h2 id="4-快照读与当前读？"><a href="#4-快照读与当前读？" class="headerlink" title="4.快照读与当前读？"></a><strong>4.快照读与当前读？</strong></h2><p><strong>快照读：</strong></p>
+<p>读取的是<strong>快照数据</strong>，不加锁的简单 Select 都属于快照读.</p>
+<p><strong>当前读：</strong></p>
+<p>读的是<strong>最新数据，</strong>而不是历史的数据，加锁的 SELECT，或者对数据进行增删改都会进行当前读。</p>
+<h2 id="5-InnoDB-的-MVCC-是如何实现的？"><a href="#5-InnoDB-的-MVCC-是如何实现的？" class="headerlink" title="5. InnoDB 的 MVCC 是如何实现的？"></a><strong>5. InnoDB 的 MVCC 是如何实现的？</strong></h2><p>InnoDB 是如何存储记录多个版本的？这些数据是 <strong>事务版本号</strong>，<strong>行记录中的隐藏列和Undo Log</strong>。</p>
+<h3 id="事务版本号"><a href="#事务版本号" class="headerlink" title="事务版本号"></a><strong>事务版本号</strong></h3><p>每开启一个日志，都会从数据库中获得一个<strong>事务ID</strong>（也称为<strong>事务版本号</strong>），这个事务 ID 是自增的，通过 ID 大小，可以判断事务的<strong>时间顺序</strong>。</p>
+<h3 id="行记录的隐藏列"><a href="#行记录的隐藏列" class="headerlink" title="行记录的隐藏列"></a><strong>行记录的隐藏列</strong></h3><ol>
+<li><strong>row_id :</strong> 隐藏的行 ID ,用来生成默认的<strong>聚集索引</strong>。如果创建数据表时没指定聚集索引，这时 InnoDB 就会用这个隐藏 ID 来创建聚集索引。采用聚集索引的方式可以提升数据的<strong>查找效率</strong>。</li>
+<li><strong>trx_id :</strong> 操作这个数据事务 ID ，也就是最后一个对数据插入或者更新的事务 ID 。</li>
+<li><strong>roll_ptr :</strong> 回滚指针，指向这个记录的 Undo Log 信息。</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/13c91af5753d42dea82b84898bd41acd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK5ZWK,size_18,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h3 id="Undo-Log"><a href="#Undo-Log" class="headerlink" title="Undo Log"></a><strong>Undo Log</strong></h3><p>InnoDB 将<strong>行记录快照保存在 Undo Log</strong> 里。</p>
+<p><img src="https://img-blog.csdnimg.cn/1dc55cd00b6345809368429bfd5197cc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK5ZWK,size_19,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p> 数据行通过快照记录都通过链表的结构的串联了起来，<strong>每个快照都保存了 trx_id 事务ID</strong>，如果要找到历史快照，就可以通过<strong>遍历回滚指针</strong>的方式进行查找。</p>
+<h2 id="Read-View-是啥？"><a href="#Read-View-是啥？" class="headerlink" title="Read View 是啥？"></a><strong>Read View 是啥？</strong></h2><p>如果一个事务要<strong>查询行记录</strong>，需要读取哪个版本的行记录呢？ Read View 就是来解决这个问题的。Read View 可以帮助我们<strong>解决可见性问题</strong>。 Read View 保存了<strong>当前事务开启时所有活跃的事务列表</strong>。换个角度，可以理解为: <strong>Read View 保存了不应该让这个事务看到的其他事务 ID 列表。</strong></p>
+<ol>
+<li><strong>trx_ids：</strong>系统当前<strong>正在活跃的事务ID集合</strong>。</li>
+<li><strong>low_limit_id ：</strong>活跃事务的最大的事务 ID。</li>
+<li><strong>up_limit_id ：</strong>活跃的事务中最小的事务 ID。</li>
+<li><strong>creator_trx_id：</strong>创建这个 ReadView 的事务ID。</li>
+</ol>
+<p>如果<strong>当前事务的 creator_trx_id 想要读取某个行记录</strong>，这个行记录ID 的trx_id ，这样会有以下的情况：</p>
+<ul>
+<li>如果 trx_id &lt; 活跃的<strong>最小</strong>事务ID（up_limit_id）,也就是说这个行记录在<strong>这些活跃的事务创建前就已经提交了，</strong>那么这个行记录对当前事务是<strong>可见的。</strong></li>
+<li>如果trx_id &gt; 活跃的<strong>最大</strong>事务ID（low_limit_id），这个说明行记录在这些活跃的事务之后才创建，说明这个行记录对当前事务是<strong>不可见的。</strong></li>
+<li>如果 up_limit_id &lt;= trx_id &lt;= low_limit_id, 说明该记录在 trx_ids 集合中，可能还处于活跃状态，因此我们需要在 trx_ids 集合中遍历 ，如果trx_id <strong>存在于 trx_ids 集合中</strong>，证明这个事务 trx_id 还处于<strong>活跃状态，不可见</strong>，否则 ，trx_id 不存在于 trx_ids 集合中，说明事务trx_id 已经提交了，这行记录是可见的。</li>
+</ul>
+<h2 id="如何查询一条记录"><a href="#如何查询一条记录" class="headerlink" title="如何查询一条记录"></a><strong>如何查询一条记录</strong></h2><ol>
+<li>获取事务自己的版本号，即 <strong>事务ID</strong></li>
+<li>获取 Read View</li>
+<li>查询得到的数据的快照，然后与 Read View 中的事务版本号进行比较。</li>
+<li>如果<strong>不符合 ReadView 规则</strong>， 那么就需要 Undo Log 中<strong>历史快照</strong>；</li>
+<li>最后返回符合规则的数据</li>
+</ol>
+<p>InnoDB 实现多版本控制 （MVCC）是通过 <strong>ReadView+ UndoLog</strong> 实现的，UndoLog 保存了历史快照，ReadView 规则帮助判断当前版本的数据是否可见。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><ul>
+<li>如果事务隔离级别是 <strong>ReadCommit</strong> ，一个事务的每一次 Select 都会去查一次ReadView ，每次查询的Read View 不同，就可能会造成不可重复读或者幻读的情况。</li>
+<li>如果事务的隔离级别是<strong>可重读</strong>，为了避免不可重读读，一个事务只在第一次 Select 的时候会获取一次Read View ，然后后面索引的Select 会复用这个 ReadView.</li>
+</ul>
 
                 
             </div>
@@ -542,7 +585,7 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/10/07/hello-world/">http://example.com/2021/10/07/hello-world/</a>
+                    <a href="http://example.com/2021/10/07/mvcc/">http://example.com/2021/10/07/mvcc/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -580,12 +623,8 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Typora/">
-                                    <span class="chip bg-color">Typora</span>
-                                </a>
-                            
-                                <a href="/tags/Markdown/">
-                                    <span class="chip bg-color">Markdown</span>
+                                <a href="/tags/MVCC/">
+                                    <span class="chip bg-color">MVCC</span>
                                 </a>
                             
                         </div>
@@ -785,13 +824,13 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/10/07/mvcc/">
+                <a href="/2021/11/07/wei-xin-gong-zhong-hao-kai-fa-esp8266/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="多版本并发控制">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="微信公众号控制ESP8266的LED">
                         
-                        <span class="card-title">多版本并发控制</span>
+                        <span class="card-title">微信公众号控制ESP8266的LED</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -802,14 +841,14 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-07
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-07
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" class="post-category">
-                                    数据库原理
+                            <a href="/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%B9%B3%E5%8F%B0/" class="post-category">
+                                    物联网平台
                                 </a>
                             
                             
@@ -819,8 +858,12 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MVCC/">
-                        <span class="chip bg-color">MVCC</span>
+                    <a href="/tags/ESP8266/">
+                        <span class="chip bg-color">ESP8266</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91/">
+                        <span class="chip bg-color">微信公众号开发</span>
                     </a>
                     
                 </div>
@@ -831,7 +874,7 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2021/10/07/hello-world/">
@@ -865,7 +908,6 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     

@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-03-29T03:49:12.320Z</updated>
+  <updated>2022-03-30T02:20:55.621Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,86 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis数据结构汇总</title>
+    <link href="http://example.com/2022/02/07/redis-shu-ju-jie-gou-hui-zong/"/>
+    <id>http://example.com/2022/02/07/redis-shu-ju-jie-gou-hui-zong/</id>
+    <published>2022-02-07T01:25:00.000Z</published>
+    <updated>2022-03-30T02:20:55.621Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;关于key：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.key****不要太长&lt;/strong&gt;，尽量不要超过1024字节，这不仅消耗内存，而且会&lt;strong&gt;降低查找的效率&lt;/strong&gt;；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.key****也</summary>
+        
+      
+    
+    
+    
+    <category term="Redis" scheme="http://example.com/categories/Redis/"/>
+    
+    
+    <category term="redis数据结构" scheme="http://example.com/tags/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信公众号控制ESP8266的LED</title>
+    <link href="http://example.com/2021/11/07/wei-xin-gong-zhong-hao-kai-fa-esp8266/"/>
+    <id>http://example.com/2021/11/07/wei-xin-gong-zhong-hao-kai-fa-esp8266/</id>
+    <published>2021-11-07T01:25:00.000Z</published>
+    <updated>2022-03-30T02:21:29.530Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;用微信公众号控制ESP8266的LED，进一步使用微信当遥控器（避免写APP或者IOS或者小程序），控制一切设备。&quot;&gt;&lt;a href=&quot;#用微信公众号控制ESP8266的LED，进一步使用微信当遥控器（避免写APP或者IOS或者小程序），控制一切设备。&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="物联网平台" scheme="http://example.com/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%B9%B3%E5%8F%B0/"/>
+    
+    
+    <category term="ESP8266" scheme="http://example.com/tags/ESP8266/"/>
+    
+    <category term="微信公众号开发" scheme="http://example.com/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多版本并发控制</title>
+    <link href="http://example.com/2021/10/07/mvcc/"/>
+    <id>http://example.com/2021/10/07/mvcc/</id>
+    <published>2021-10-07T01:25:00.000Z</published>
+    <updated>2022-03-30T02:19:38.642Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;并发一致性问题：&quot;&gt;&lt;a href=&quot;#并发一致性问题：&quot; class=&quot;headerlink&quot; title=&quot;并发一致性问题：&quot;&gt;&lt;/a&gt;并发一致性问题：&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;1. 丢失修改:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.</summary>
+        
+      
+    
+    
+    
+    <category term="数据库原理" scheme="http://example.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="MVCC" scheme="http://example.com/tags/MVCC/"/>
+    
+  </entry>
   
   <entry>
     <title>typora-vue-theme Theme introduction</title>

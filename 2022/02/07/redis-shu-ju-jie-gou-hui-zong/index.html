@@ -4,9 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="typora-vue-theme Theme introduction, Z-Forest&#39;s Blog">
-    <meta name="description" content="
-title: Hello WorldWelcome to Hexo! This is your very first post. Check documentation for more info. If you get any prob">
+    <meta name="keywords" content="Redis数据结构汇总, Z-Forest&#39;s Blog">
+    <meta name="description" content="关于key：
+1.key****不要太长，尽量不要超过1024字节，这不仅消耗内存，而且会降低查找的效率；
+2.key****也不要太短，太短的话，key的可读性会降低；
+3.在一个项目中，key最好使用统一的命名模式，例如user:100">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +20,7 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>typora-vue-theme Theme introduction | Z-Forest&#39;s Blog</title>
+    <title>Redis数据结构汇总 | Z-Forest&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -313,12 +315,12 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">typora-vue-theme Theme introduction</h1>
+                    <h1 class="description center-align post-title">Redis数据结构汇总</h1>
                 </div>
             </div>
         </div>
@@ -434,12 +436,8 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Typora/">
-                                <span class="chip bg-color">Typora</span>
-                            </a>
-                        
-                            <a href="/tags/Markdown/">
-                                <span class="chip bg-color">Markdown</span>
+                            <a href="/tags/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">redis数据结构</span>
                             </a>
                         
                     </div>
@@ -450,8 +448,8 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Markdown/" class="post-category">
-                                Markdown
+                            <a href="/categories/Redis/" class="post-category">
+                                Redis
                             </a>
                         
                     </div>
@@ -463,7 +461,7 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-07
+                    2022-02-07
                 </div>
                 
 
@@ -472,14 +470,14 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    75
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -502,20 +500,60 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <hr>
-<h2 id="title-Hello-World"><a href="#title-Hello-World" class="headerlink" title="title: Hello World"></a>title: Hello World</h2><p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <p><strong>关于key：</strong></p>
+<p><strong>1.key****不要太长</strong>，尽量不要超过1024字节，这不仅消耗内存，而且会<strong>降低查找的效率</strong>；</p>
+<p><strong>2.key****也不要太短</strong>，太短的话，key的<strong>可读性会降低</strong>；</p>
+<p>3.在一个项目中，key最好使用<strong>统一的命名</strong>模式，例如user:10000:passwd。</p>
+<p><img src="https://img-blog.csdnimg.cn/a27425f4b5314e018913a10a4e1c34ce.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h1 id="1-字符串-String终究是我扛下了所有-："><a href="#1-字符串-String终究是我扛下了所有-：" class="headerlink" title="**1.**字符串(String终究是我扛下了所有)："></a>**1.**<strong>字符串(String终究是我扛下了所有)：</strong></h1><p>redis中的键都是字符串对象，而且其他几种数据结构都是在字符串对象基础上构建的。字符串对象的值可以是<strong>字符串(Json/XML)、数字(int/double等)或二进制(图片视频音频等)<strong>，最大不能超过512MB。字符串对象的内部编码有3种 ：</strong>int(字符串对象保存的是int ,并且可以用long表示)、raw(字符串对象保存的字符串值长度&gt;32字节)和embstr(&lt;=32字节)<strong>。Redis会根据当前</strong>值的类型和长度</strong>来决定使用哪种编码来实现。</p>
+<p><img src="https://img-blog.csdnimg.cn/6ce8895892354b70bbe13ac1b8140a51.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><strong>应用场景：</strong></p>
+<p><strong>①Redis经常作为缓存层</strong>，<strong>来缓存热点数据</strong>。先去redis读取，没有再去数据库。不过要注意一些问题：缓存穿透、雪崩以及缓存更新问题等。</p>
+<p><strong>②计数器：</strong>经常可以被用来做计数器，如微博的评论数、点赞数、分享数，抖音作品的收藏数，京东商品的销售量、评价数等。<strong>限速器：</strong>如验证码接口访问频率限制，会限制用户每分钟获取验证码的频率。<strong>分布式ID：</strong>由于Redis自增自减操作的原子性，也经常在分布式系统中用来生成唯一的订单号、序列号等。</p>
+<p>**③分布式系统共享session:**用户的请求可能分发到不同的服务器上，从而导致用户登录保存Session是在一台服务器上，而读取Session是在另一台服务器上因此会读不到Session。</p>
+<p><strong>④二进制数据的存储</strong>(图片视频音频等)。</p>
+<h1 id="2-列表-List栈和队列我都行-："><a href="#2-列表-List栈和队列我都行-：" class="headerlink" title="**2.**列表(List栈和队列我都行)："></a>**2.**<strong>列表(List栈和队列我都行)：</strong></h1><p>存储一组有序的、可重复的数据。因<strong>有序性</strong>，它可以获取指定范围的列表元素，<strong>可以0(1)时间复杂度获取指定索引下标的元素。</strong></p>
+<p>①当列表的<strong>元素个数&lt;512</strong>并且每个元素的<strong>值&lt;64字节</strong>时: List对象使用ziplist(压缩列表)数据结构，否则用linkedlist作为内部实现。</p>
+<p>②Redis 3.2版本开始使用<strong>quicklist是</strong>zipList和linkedList的混合体，代替了ziplist和linkedlist(**双向循环列表)**，调高了内存管理效率。</p>
+<p><strong>改用quicklist原因：</strong>链表的<strong>附加空间相对太高</strong>prev和next指针就要占去16个字节(64位系统的指针是8个字节), 另外每个节点的内存都是单独分配(加剧**内存的碎片化)**，影响内存管理效率。</p>
+<p><strong>应用场景：</strong></p>
+<p>①列表对象有序——&gt;做文章、商品等列表的存储。</p>
+<p>②队列：lpush和rpop (查询并删除)第一个元素，消息队列。</p>
+<p>③栈：1push 1pop</p>
+<h1 id="3-哈希-Hash存储对象我也行-：key-map"><a href="#3-哈希-Hash存储对象我也行-：key-map" class="headerlink" title="3. 哈希(Hash存储对象我也行)：key : map"></a><strong>3.</strong> <strong>哈希(Hash存储对象我也行)：</strong>key : map</h1><p><strong>①两种实现方式</strong>：<strong>ziplist（压缩列表）， hashtable(哈希表)</strong></p>
+<p><strong>②数据量小的时候</strong>：字典中保存的<strong>键值大小&lt; 64 字节</strong> 并且 字典中<strong>键值对个数&lt;512个</strong>。否则用hashtable来实现哈希对象。</p>
+<p><img src="https://img-blog.csdnimg.cn/9a1ad0b852274775a7ae6627be465116.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_17,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><strong>应用场景：</strong></p>
+<p>①字符串对象的很多功能使用哈希对象可以实现。如缓存用户信息的时候，使用Redis哈希对象存储，简单直观，如果使用合理可以减少内存空间的使用。<strong>缺点</strong>是hashtable会<strong>消耗更多内存</strong>。②购物车、计数器等功能。</p>
+<h1 id="4-集合-Set标签系统我在行"><a href="#4-集合-Set标签系统我在行" class="headerlink" title="4. 集合(Set标签系统我在行)"></a><strong>4.</strong> <strong>集合(Set标签系统我在行)</strong></h1><p><strong>内部编码两种</strong>: 元素都是整数 且 元素个数&lt;512个使用intset编码，否则使用hashtable</p>
+<p><strong>应用场景：</strong></p>
+<p><strong>①</strong>无序、不可重复、支持并交差——&gt;可以用于标签系统。</p>
+<p>②SPOP（随机移除并返回集合中一个或多个元素）和 SRANDMEMBER（随机返回集合中一个或多个元素）命令——&gt;可以实现抽奖系统。</p>
+<h1 id="5-有序集合-ZSet排名我最棒-："><a href="#5-有序集合-ZSet排名我最棒-：" class="headerlink" title="5. **有序集合(ZSet排名我最棒)**："></a><strong>5.</strong> **有序集合(ZSet排名我最棒)**：</h1><p>Set + score(分值), <strong>ZSet****元素不重复但是分值可以重复</strong>，可以用于排序。</p>
+<p><strong>存储结构：</strong>数据较少时,元素个数&lt;128个；元素长度&lt;64字节。用ziplist存储。否则用skiplist(跳表)存储。</p>
+<p><strong>应用场景：</strong></p>
+<p>①排行榜：网站用户点赞、播放排名、电商系统中商品销量排名等。</p>
+<h1 id="6-压缩列表-zip1ist-：是列表和哈希的底层实现之一。"><a href="#6-压缩列表-zip1ist-：是列表和哈希的底层实现之一。" class="headerlink" title="**6.**压缩列表(zip1ist)：是列表和哈希的底层实现之一。"></a>**6.**<strong>压缩列表(zip1ist)：</strong>是列表和哈希的底层实现之一。</h1><p>  <strong>列表只包含少量列表项</strong>,并且每个列表项要么就是<strong>小整数值</strong>,要么就是<strong>长度比较短的字符串</strong>,那么Redis就会使用压缩列表来做<strong>List的底层实现</strong>。</p>
+<p>  <strong>哈希只包含少量键值对</strong>, 并且每个键值对的<strong>键和值</strong>要么就是<strong>小整数值</strong>,要么就是<strong>长度比较短的字符串</strong>,那么Redis就会使用压缩列表来做<strong>Hash的底层实现</strong>。</p>
+<p><img src="https://img-blog.csdnimg.cn/a827700e7e1743ad8242d87e765eada8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h1 id="7-跳跃表-skiplist-：-单链表-多级索引"><a href="#7-跳跃表-skiplist-：-单链表-多级索引" class="headerlink" title="7. 跳跃表(skiplist)：****单链表 + 多级索引"></a><strong>7.</strong> <strong>跳跃表(skiplist)：****单链表 + 多级索引</strong></h1><p>如果一个有序集合元素数量<strong>比较多</strong> 或 元素成员是<strong>比较长</strong>的字符串时，Redis 就会<strong>使用跳跃表作为有序集合健的底层实现</strong>。</p>
+<p><strong>特点：</strong></p>
+<p>①跳跃表在链表的基础上增加了<strong>多级索引提升查找的效率</strong>，但其是一个<strong>空间换时间</strong>的方案，必然会带来一个问题-索引是占内存的。原始链表中存储的有可能是很大的对象，而<strong>索引结点只需要存储关键值和几个指针</strong>，<strong>优势会放大，缺点可忽略</strong>。</p>
+<p>②跳跃表由<strong>zskiplist</strong>和<strong>zskiplist</strong>node两个结构组成，其中 <strong>zskiplist用于保存跳跃表信息</strong>（比如<strong>表头节点、表尾节点、长度</strong>），而<strong>zskiplistnode则用于表示跳跃表节点(层level、后退指针backward、分值score、成员对象oj)</strong></p>
+<p>③Redis每个跳跃表<strong>节点的层高都是1至32</strong>之间的随机数</p>
+<p>④在同一个跳跃表中，多个节点可以包含相同的分值，但每个节点的成员对象必须是唯一的跳跃表中的节点按照分值大小进行排序，当分值相同时，节点按照成员对象的大小进行排序。<strong>（分值可以重复，但元素不能重复）</strong></p>
+<h1 id="8-快速列表-quicklist-："><a href="#8-快速列表-quicklist-：" class="headerlink" title="**8.**快速列表(quicklist)："></a>**8.**<strong>快速列表(quicklist)：</strong></h1><p>Redis 3.2版本以后提出的，是 zipList 和 linkedList 的混合体，相对于链表它<strong>压缩了内存</strong>。<strong>即有链表的双向性质，又有ziplist高效的内存使用率</strong>。一个quicklistnode的数据由ziplist存储存储，<strong>新建一个ziplist就会新建一个quicklistnode节点。</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/4f08211833294ef49be96eae01c24b3c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5piv55yf55qE6I-c5ZWK5ZWK,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><strong>插入</strong></p>
+<p>**①头结点的头部或尾节点的尾部插入:**如果头节点(或尾节点)上ziplist大小没有超过限制, 那么新数据被直接插入到ziplist中（调用 ziplistPush ）。否则新创建一个quicklistNode节点(对应地也会新创建一个ziplist)</p>
+<p><strong>②中间插入：</strong></p>
+<p>1.没有超过插入位置所在ziplist的限制，直接插；</p>
+<p>2.插入位置所在的ziplist超过了限制，并且插在ziplist两端，相邻quicklist的ziplist大小没有超过限制，插入相邻quicklist的ziplist</p>
+<p>3.插入位置所在的ziplist超过限制，并且在ziplist两端，相邻的quicklist的ziplist大小超过了限制，新建一个quicklist然后插入到新建的quicklist的ziplist中</p>
+<p>4.插入位置所在的ziplist超过限制，并且在ziplist中间插入，需要把ziplist分裂为两个节点，然后再在其中一个节点插入。</p>
+<p><strong>②删除</strong></p>
+<p><strong>③查找</strong></p>
+<p>知道查找数据的index。我们需要先根据node的个数，找到对应的ziplist，调用ziplist的index就能成功找到。</p>
 
                 
             </div>
@@ -542,7 +580,7 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/10/07/hello-world/">http://example.com/2021/10/07/hello-world/</a>
+                    <a href="http://example.com/2022/02/07/redis-shu-ju-jie-gou-hui-zong/">http://example.com/2022/02/07/redis-shu-ju-jie-gou-hui-zong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -580,12 +618,8 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Typora/">
-                                    <span class="chip bg-color">Typora</span>
-                                </a>
-                            
-                                <a href="/tags/Markdown/">
-                                    <span class="chip bg-color">Markdown</span>
+                                <a href="/tags/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">redis数据结构</span>
                                 </a>
                             
                         </div>
@@ -781,66 +815,18 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/10/07/mvcc/">
+                <a href="/2022/02/07/redis-shu-ju-jie-gou-hui-zong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="多版本并发控制">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Redis数据结构汇总">
                         
-                        <span class="card-title">多版本并发控制</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-07
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/" class="post-category">
-                                    数据库原理
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/MVCC/">
-                        <span class="chip bg-color">MVCC</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/10/07/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="typora-vue-theme Theme introduction">
-                        
-                        <span class="card-title">typora-vue-theme Theme introduction</span>
+                        <span class="card-title">Redis数据结构汇总</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -851,14 +837,14 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Markdown/" class="post-category">
-                                    Markdown
+                            <a href="/categories/Redis/" class="post-category">
+                                    Redis
                                 </a>
                             
                             
@@ -869,12 +855,61 @@ title: Hello WorldWelcome to Hexo! This is your very first post. Check documenta
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Typora/">
-                        <span class="chip bg-color">Typora</span>
+                    <a href="/tags/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">redis数据结构</span>
                     </a>
                     
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/11/07/wei-xin-gong-zhong-hao-kai-fa-esp8266/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="微信公众号控制ESP8266的LED">
+                        
+                        <span class="card-title">微信公众号控制ESP8266的LED</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%B9%B3%E5%8F%B0/" class="post-category">
+                                    物联网平台
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ESP8266/">
+                        <span class="chip bg-color">ESP8266</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91/">
+                        <span class="chip bg-color">微信公众号开发</span>
                     </a>
                     
                 </div>
