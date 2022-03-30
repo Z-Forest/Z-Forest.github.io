@@ -44,6 +44,33 @@
   </entry>
   
   <entry>
+    <title>Redis常用语法</title>
+    <link href="http://example.com/2021/12/18/redis-chang-yong-yu-fa/"/>
+    <id>http://example.com/2021/12/18/redis-chang-yong-yu-fa/</id>
+    <published>2021-12-18T07:38:21.000Z</published>
+    <updated>2022-03-30T02:37:27.772Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-String&quot;&gt;&lt;a href=&quot;#1-String&quot; class=&quot;headerlink&quot; title=&quot;1. String&quot;&gt;&lt;/a&gt;1.</summary>
+        
+      
+    
+    
+    
+    <category term="Redis" scheme="http://example.com/categories/Redis/"/>
+    
+    
+    <category term="redis语法" scheme="http://example.com/tags/redis%E8%AF%AD%E6%B3%95/"/>
+    
+    <category term="redis数据结构" scheme="http://example.com/tags/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
     <title>微信公众号控制ESP8266的LED</title>
     <link href="http://example.com/2021/11/07/wei-xin-gong-zhong-hao-kai-fa-esp8266/"/>
     <id>http://example.com/2021/11/07/wei-xin-gong-zhong-hao-kai-fa-esp8266/</id>
@@ -75,7 +102,7 @@
     <link href="http://example.com/2021/10/07/mvcc/"/>
     <id>http://example.com/2021/10/07/mvcc/</id>
     <published>2021-10-07T01:25:00.000Z</published>
-    <updated>2022-03-30T02:19:38.642Z</updated>
+    <updated>2022-03-30T02:36:45.326Z</updated>
     
     
       
