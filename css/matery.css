@@ -241,11 +241,10 @@ mark {
 }
 
 
-.bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+.bg-color {  /*修改导航栏颜色*/
+    background-image: linear-gradient(to right, #00e676 0%, #1b5e20 100%);
     opacity: 0.8  /* 透明效果 */
 }
-
 
 .text-color {
     color: #0f9d58 !important;
@@ -559,7 +558,7 @@ header .go-back i {
 }
 
 .bg-cover:before,
-.bg-cover:after {
+.bg-cover:after {  /*背景图遮罩颜色*/
     position: absolute;
     z-index: 1;
     width: 100%;
@@ -567,7 +566,7 @@ header .go-back i {
     display: block;
     left: 0;
     top: 0;
-    content: "";
+    content: "";  /*注释掉content内容即可*/
 }
 
 .bg-cover .container {
